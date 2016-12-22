@@ -4,7 +4,7 @@ namespace Vsite.CSharp
 {
     public class TipskiSigurneImplementacije
     {
-        public struct Duljina
+        public struct Duljina : IComparable
         {
             private int duljina;
 
@@ -17,11 +17,21 @@ namespace Vsite.CSharp
             {
                 return string.Format("{0} m", duljina);
             }
+
+            int IComparable.CompareTo(object obj)
+            {
+                throw new NotImplementedException();
+            }
+            public int CompareTo(Duljina d)
+            {
+                return 0;
+            }
+
         }
 
-        public static void Usporedi(Duljina d1, object d2)
+        public static void Usporedi(Duljina d1, Dul d2)
         {
-            int usporedba = 0; // d1.CompareTo(d2);
+            int usporedba = d1.CompareTo(d2);
             if (usporedba == 0)
                 Console.WriteLine("{0} = {1}", d1, d2);
             else if (usporedba > 0)
