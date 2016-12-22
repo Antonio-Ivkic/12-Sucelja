@@ -1,68 +1,80 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 namespace Vsite.CSharp
 {
-    public class SmisaoSuèelja
+    public class SmisaoSuÄelja
     {
-        static void Ispiši(List<Osoba> list)
+        class UsporedbaPoImenu : IComparer<Osoba>
+        {
+            public int Compare(Osoba x, Osoba y)
+            {
+                return x.Ime.CompareTo(y.Ime);
+            }
+        }
+        static void IspiÅ¡i(List<Osoba> list)
         {
             foreach (Osoba o in list)
                 Console.WriteLine(o);
         }
 
-        public static void SortiranoPoNeèemu(List<Osoba> osobe)
+        public static void SortiranoPoNeÄemu(List<Osoba> osobe)
         {
             osobe.Sort();
         }
 
         public static void SortiranoPoImenu(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(IComparer(T)) abecedno sortirati osobe prema njihovim imenima.
+            // TODO: KoristeÄ‡i preoptereÄ‡enu inaÄicu metode List<T>.Sort(IComparer(T)) abecedno sortirati osobe prema njihovim imenima.
+            UsporedbaPoImenu upi = new UsporedbaPoImenu();
+            osobe.Sort(upi);
         }
 
-        public static void SortiranoPoDatumuRoğenja(List<Osoba> osobe)
+        public static void SortiranoPoDatumuRoÄ‘enja(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(Comparison(T)) sortirati osobe prema njihovim datumima roğenja.
+            // TODO: KoristeÄ‡i preoptereÄ‡enu inaÄicu metode List<T>.Sort(Comparison(T)) sortirati osobe prema njihovim datumima roÄ‘enja.
+
+            osobe.Sort((x, y) => x.DatumRoÄ‘enja.CompareTo(y.DatumRoÄ‘enja));
         }
 
-        public static void SortiranoPoMjestuRoğenja(List<Osoba> osobe)
+        public static void SortiranoPoMjestuRoÄ‘enja(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(Comparison(T)) osobe sortirati prema njihovim mjestima roğenja.
+            // TODO: KoristeÄ‡i preoptereÄ‡enu inaÄicu metode List<T>.Sort(Comparison(T)) osobe sortirati prema njihovim mjestima roÄ‘enja.
+            osobe.Sort((x, y) => x.MjestoRoÄ‘enja.CompareTo(y.MjestoRoÄ‘enja));
         }
 
         static void Main(string[] args)
         {
             List<Osoba> popisOsoba = new List<Osoba>();
 
-            popisOsoba.Add(new Osoba("Ana", "Mariæ", new DateTime(1975, 7, 12), "Split"));
-            popisOsoba.Add(new Osoba("arko", "Leviæ", new DateTime(1965, 12, 4), "Osijek"));
-            popisOsoba.Add(new Osoba("Marko", "Karamatiæ", new DateTime(1983, 4, 2), "Sinj"));
+            popisOsoba.Add(new Osoba("Ana", "MariÄ‡", new DateTime(1975, 7, 12), "Split"));
+            popisOsoba.Add(new Osoba("Å½arko", "LeviÄ‡", new DateTime(1965, 12, 4), "Osijek"));
+            popisOsoba.Add(new Osoba("Marko", "KaramatiÄ‡", new DateTime(1983, 4, 2), "Sinj"));
             popisOsoba.Add(new Osoba("Tomislav", "Kralj", new DateTime(1971, 11, 5), "Beli Manastir"));
 
             Console.WriteLine("Ispis prije sortiranja:");
-            Ispiši(popisOsoba);
+            IspiÅ¡i(popisOsoba);
             Console.WriteLine();
 
             try
             {
                 Console.WriteLine("Sortiramo podrazumijevano:");
-                SortiranoPoNeèemu(popisOsoba);
-                Ispiši(popisOsoba);
+                SortiranoPoNeÄemu(popisOsoba);
+                IspiÅ¡i(popisOsoba);
                 Console.WriteLine();
 
                 Console.WriteLine("Sortiramo po imenu:");
                 SortiranoPoImenu(popisOsoba);
-                Ispiši(popisOsoba);
+                IspiÅ¡i(popisOsoba);
                 Console.WriteLine();
 
-                Console.WriteLine("Sortiramo po datumu roğenja:");
-                SortiranoPoDatumuRoğenja(popisOsoba);
-                Ispiši(popisOsoba);
+                Console.WriteLine("Sortiramo po datumu roÄ‘enja:");
+                SortiranoPoDatumuRoÄ‘enja(popisOsoba);
+                IspiÅ¡i(popisOsoba);
 
-                Console.WriteLine("Sortiramo po mjestu roğenja:");
-                SortiranoPoMjestuRoğenja(popisOsoba);
-                Ispiši(popisOsoba);
+                Console.WriteLine("Sortiramo po mjestu roÄ‘enja:");
+                SortiranoPoMjestuRoÄ‘enja(popisOsoba);
+                IspiÅ¡i(popisOsoba);
             }
             catch (Exception e) 
             {

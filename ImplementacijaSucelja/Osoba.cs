@@ -1,25 +1,34 @@
-using System;
+﻿using System;
 
 namespace Vsite.CSharp
 {
-    public class Osoba
+    public class Osoba : IComparable<Osoba>
     {
-        public Osoba(string ime, string prezime, DateTime datumRo�enja, string mjestoRo�enja)
+        public Osoba(string ime, string prezime, DateTime datumRođenja, string mjestoRođenja)
         {
             Ime = ime;
             Prezime = prezime;
-            DatumRo�enja = datumRo�enja;
-            MjestoRo�enja = mjestoRo�enja;
+            DatumRođenja = datumRođenja;
+            MjestoRođenja = mjestoRođenja;
         }
 
         public override string ToString()
         {
-            return string.Format("{0} {1}, {2}, {3}", Ime, Prezime, DatumRo�enja.ToShortDateString(), MjestoRo�enja);
+            return string.Format("{0} {1}, {2}, {3}", Ime, Prezime, DatumRođenja.ToShortDateString(), MjestoRođenja);
+        }
+
+        public int CompareTo(Osoba other)
+        {
+            int rezultat = Prezime.CompareTo(other.Prezime);
+            if (rezultat != 0)
+                return rezultat;
+            return Ime.CompareTo(other.Ime);
+            throw new NotImplementedException();
         }
 
         public readonly string Ime;
         public readonly string Prezime;
-        public readonly DateTime DatumRo�enja;
-        public readonly string MjestoRo�enja;
+        public readonly DateTime DatumRođenja;
+        public readonly string MjestoRođenja;
     }
 }

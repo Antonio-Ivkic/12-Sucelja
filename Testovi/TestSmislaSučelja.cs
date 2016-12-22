@@ -21,7 +21,7 @@ namespace Vsite.CSharp.Testovi
         }
 
         [TestMethod]
-        public void SmisaoSučelja_SortiranjePoImenu()
+        public void SmisaoSućelja_SortiranjePoImenu()
         {
             List<Osoba> popisOsoba = PopisOsoba();
             SmisaoSučelja.SortiranoPoImenu(popisOsoba);
@@ -32,7 +32,7 @@ namespace Vsite.CSharp.Testovi
         }
 
         [TestMethod]
-        public void SmisaoSučelja_SortiranjePoDatumuRođenja()
+        public void SmisaoSućelja_SortiranjePoDatumuRođenja()
         {
             List<Osoba> popisOsoba = PopisOsoba();
             SmisaoSučelja.SortiranoPoDatumuRođenja(popisOsoba);
@@ -43,7 +43,7 @@ namespace Vsite.CSharp.Testovi
         }
 
         [TestMethod]
-        public void SmisaoSučelja_SortiranjePoMjestuRođenja()
+        public void SmisaoSućelja_SortiranjePoMjestuRođenja()
         {
             List<Osoba> popisOsoba = PopisOsoba();
             SmisaoSučelja.SortiranoPoMjestuRođenja(popisOsoba);
